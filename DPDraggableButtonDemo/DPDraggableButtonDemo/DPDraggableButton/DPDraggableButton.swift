@@ -50,6 +50,9 @@ public class DPDraggableButton: UIButton {
     }
     private var tapBlockStored:(()->Void)?
     
+    
+    
+    
     var doubleTapBlock:(()->Void)?
     var longPressBlock:(()->Void)?
     var draggingBlock:(()->Void)?
