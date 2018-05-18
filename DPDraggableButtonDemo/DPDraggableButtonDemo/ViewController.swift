@@ -17,65 +17,65 @@ class ViewController: UIViewController {
   var logInfo: String = "Log:"
   var draggableButton: DPDraggableButton!
 
-  override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    UIApplication.sharedApplication().keyWindow?.bringSubviewToFront(self.draggableButton)
+        UIApplication.shared.keyWindow?.bringSubview(toFront: self.draggableButton)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.draggableButton = DPDraggableButton.init(frame: CGRectMake(0, 120, 100, 40),
+    self.draggableButton = DPDraggableButton.init(frame: CGRect(x: 0, y: 120, width: 100, height: 40),
                                                   draggableButtonType: .DPDraggableRect)
-    self.draggableButton.backgroundColor = UIColor.grayColor()
-    self.draggableButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    self.draggableButton.setTitle("drag me", forState: .Normal)
+    self.draggableButton.backgroundColor = UIColor.gray
+    self.draggableButton.setTitleColor(UIColor.white, for: .normal)
+    self.draggableButton.setTitle("drag me", for: .normal)
     
     self.draggableButton.tapBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[single tap]")
+        this.refreshLog(logInfo: "[single tap]")
       }
     }
     
     self.draggableButton.doubleTapBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[double tap]")
+        this.refreshLog(logInfo: "[double tap]")
       }
     }
     
     self.draggableButton.longPressBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[longpress]")
+        this.refreshLog(logInfo: "[longpress]")
       }
     }
     
     self.draggableButton.draggingBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[dragging]")
+        this.refreshLog(logInfo: "[dragging]")
       }
     }
     
     self.draggableButton.dragDoneBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[drag done]")
+        this.refreshLog(logInfo: "[drag done]")
       }
     }
     
     self.draggableButton.autoDockingBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[auto docking]")
+        this.refreshLog(logInfo: "[auto docking]")
       }
     }
     
     self.draggableButton.autoDockingDoneBlock = {
       [weak self] in
       if let this = self {
-        this.refreshLog("[auto docking done]")
+        this.refreshLog(logInfo: "[auto docking done]")
       }
     }
   }
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
   }
 
   func refreshLog(logInfo: String) {
-    if logSwitch.on {
+    if logSwitch.isOn {
       self.logInfo += logInfo
       self.consoleLabel.text = self.logInfo
     }
